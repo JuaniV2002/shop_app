@@ -11,7 +11,7 @@ class OrderItem extends StatefulWidget {
   OrderItem(this.order);
 
   @override
-  State<OrderItem> createState() => _OrderItemState();
+  _OrderItemState createState() => _OrderItemState();
 }
 
 class _OrderItemState extends State<OrderItem> {
@@ -24,9 +24,9 @@ class _OrderItemState extends State<OrderItem> {
       child: Column(
         children: <Widget>[
           ListTile(
-            title: Text("\$${widget.order.amount}"),
+            title: Text('\$${widget.order.amount}'),
             subtitle: Text(
-              DateFormat("dd/MM/yyyy hh:mm").format(widget.order.dateTime),
+              DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
             ),
             trailing: IconButton(
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
@@ -40,7 +40,7 @@ class _OrderItemState extends State<OrderItem> {
           if (_expanded)
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-              height: min(widget.order.products.length * 20.0 + 10, 180),
+              height: min(widget.order.products.length * 20.0 + 10, 100),
               child: ListView(
                 children: widget.order.products
                     .map(
@@ -55,7 +55,7 @@ class _OrderItemState extends State<OrderItem> {
                             ),
                           ),
                           Text(
-                            "${prod.quantity}x \$${prod.price}}",
+                            '${prod.quantity}x \$${prod.price}',
                             style: TextStyle(
                               fontSize: 18,
                               color: Colors.grey,

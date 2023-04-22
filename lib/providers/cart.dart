@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:flutter/foundation.dart';
 
 class CartItem {
@@ -45,21 +43,21 @@ class Cart with ChangeNotifier {
       _items.update(
         productId,
         (existingCartItem) => CartItem(
-          id: existingCartItem.id,
-          title: existingCartItem.title,
-          quantity: existingCartItem.quantity + 1,
-          price: existingCartItem.price,
-        ),
+              id: existingCartItem.id,
+              title: existingCartItem.title,
+              price: existingCartItem.price,
+              quantity: existingCartItem.quantity + 1,
+            ),
       );
     } else {
       _items.putIfAbsent(
         productId,
         () => CartItem(
-          id: DateTime.now().toString(),
-          title: title,
-          quantity: 1,
-          price: price,
-        ),
+              id: DateTime.now().toString(),
+              title: title,
+              price: price,
+              quantity: 1,
+            ),
       );
     }
     notifyListeners();
@@ -76,14 +74,13 @@ class Cart with ChangeNotifier {
     }
     if (_items[productId].quantity > 1) {
       _items.update(
-        productId,
-        (existingCartItem) => CartItem(
-          id: existingCartItem.id,
-          title: existingCartItem.title,
-          quantity: existingCartItem.quantity - 1,
-          price: existingCartItem.price,
-        ),
-      );
+          productId,
+          (existingCartItem) => CartItem(
+                id: existingCartItem.id,
+                title: existingCartItem.title,
+                price: existingCartItem.price,
+                quantity: existingCartItem.quantity - 1,
+              ));
     } else {
       _items.remove(productId);
     }
